@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: testapp-frontend
+  name: new-testapp-frontend
   namespace: default
   labels:
-    app.kubernetes.io/name: testapp-frontend
+    app.kubernetes.io/name: new-testapp-frontend
 spec:
-  replicas: 2
-  revisionHistoryLimit: 1
+  replicas: 3
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: testapp-frontend
+      app.kubernetes.io/name: new-testapp-frontend
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: testapp-frontend
+        app.kubernetes.io/name: new-testapp-frontend
     spec:
       containers:
-        - name: testapp-frontend
+        - name: new-testapp-frontend
           image: nginx:latest
           ports:
             - containerPort: 80
