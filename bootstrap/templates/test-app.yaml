@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-app
+  namespace: argocd
+spec:
+  project: test-app
+  destination:
+    namespace: test-app
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: https://github.com/bram2202/test-infra.git
+    targetRevision: HEAD
+    path: test-app
+    helm:
+      valueFiles:
+      - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
