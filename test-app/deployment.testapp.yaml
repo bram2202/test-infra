@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp-frontend
+  namespace: bram-namespace
+  labels:
+    app.kubernetes.io/name: testapp-frontend
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: testapp-frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: testapp-frontend
+    spec:
+      containers:
+        - name: testapp-frontend
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 15m
+              memory: 128Mi
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: secret-frontend
