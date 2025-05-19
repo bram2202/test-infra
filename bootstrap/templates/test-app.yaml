@@ -4,9 +4,9 @@ metadata:
   name: test-app
   namespace: argocd
 spec:
-  project: test-app
+  project: default
   destination:
-    namespace: test-app
+    namespace: default
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: https://github.com/bram2202/test-infra.git
