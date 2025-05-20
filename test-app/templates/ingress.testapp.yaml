@@ -2,13 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: testapp-frontend
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
+    - host: {{ .Values.testapp.host }}
     - http:
         paths:
-          - path: /old(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:

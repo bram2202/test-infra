@@ -1,1 +1,5 @@
 
+newtestapp:
+  host: new-testapp.example.com
+testapp:
+  host: testapp.example.com
